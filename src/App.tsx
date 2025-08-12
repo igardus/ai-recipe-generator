@@ -1,5 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+ export default function App() {
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>AI Recipe Generator</h1>
+      <p>Deployed with AWS Amplify.</p>
+    </main>
+  );
+}
 
 function App() {
   const [count, setCount] = useState(0)
