@@ -1,22 +1,31 @@
 version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-        - export NVM_DIR="$HOME/.nvm"
-        - . "$NVM_DIR/nvm.sh"
-        - nvm install 20
-        - nvm use 20
-        - node -v
-        - npm ci
-    build:
-      commands:
-        - npm run build
-  artifacts:
-    baseDirectory: dist
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
+applications:
+  - appRoot: .
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - echo "=== SETUP NVM & NODE 20 ==="
+            - export NVM_DIR="$HOME/.nvm"
+            - '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" || true'
+            - '[ -s "/root/.nvm/nvm.sh" ] && . "/root/.nvm/nvm.sh" || true'
+            - nvm install 20
+            - nvm use 20
+            - echo "Node version (should be v20.x):"
+            - node -v
+            - echo "NPM version:"
+            - npm -v
+            - echo "=== INSTALL DEPS ==="
+            - npm ci
+        build:
+          commands:
+            - echo "=== BUILD START ==="
+            - npm run build
+            - echo "=== BUILD DONE ==="
+      artifacts:
+        baseDirectory: dist
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
