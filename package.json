@@ -5,12 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^6.11.2",
     "aws-amplify": "^6.15.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
