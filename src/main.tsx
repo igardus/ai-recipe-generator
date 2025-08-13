@@ -1,4 +1,10 @@
-// in your frontend (e.g., src/main.tsx or wherever you create the client)
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "../amplify/data/resource"; // note: import type
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
